@@ -1,0 +1,48 @@
+---
+title: "Harvard Enrollments"
+output: html_document
+date: "2025-05-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set()
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(dplyr)
+library(pdftools)
+library(stringr)
+
+```
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+source('data_processing_cleaning.R')
+```
+
+## Plots
+
+```{r}
+race_df |>
+  filter(Race %in% c('Asian', 'White', 'Black', 'Hispanic')) |>
+  ggplot() +
+  aes( x = Academic_Year, 
+       y = Count, 
+       col = Race,
+       group = Race) +
+  geom_line()
+
+```
+
+```{r}
+race_df |>
+  filter(Race %in% c('Asian', 'White', 'Black', 'Hispanic')) |>
+  ggplot() +
+  aes( x = Academic_Year, 
+       y = Count, 
+       fill = Race) +
+  geom_col(position = 'fill')
+
+```
