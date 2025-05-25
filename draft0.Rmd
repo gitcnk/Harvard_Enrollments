@@ -1,8 +1,13 @@
 ---
 title: "Harvard Enrollments"
-output: html_document
-date: "2025-05-25"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    source_code: https://github.com/gitcnk/Harvard_Enrollments
+runtime: shiny
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set()
